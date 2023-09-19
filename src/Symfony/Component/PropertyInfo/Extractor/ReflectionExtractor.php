@@ -617,7 +617,7 @@ class ReflectionExtractor implements PropertyListExtractorInterface, PropertyTyp
      */
     private function getMutatorMethod(string $class, string $property): ?array
     {
-        $ucProperty = ucfirst($property);
+        $ucProperty = $this->camelize($property);
         $ucSingulars = $this->inflector->singularize($ucProperty);
 
         $mutatorPrefixes = \in_array($ucProperty, $ucSingulars, true) ? $this->arrayMutatorPrefixesLast : $this->arrayMutatorPrefixesFirst;
